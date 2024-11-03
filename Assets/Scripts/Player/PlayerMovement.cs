@@ -30,7 +30,7 @@ namespace Player
                 PauseMovement();
             }
         }
-
+        
         private void HandleForwardMovement()
         {
             _backMotor.motorSpeed = forwardSpeed;
