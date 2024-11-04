@@ -10,6 +10,7 @@ namespace Player
         [Header("Components")]
         public Rigidbody2D rb;
         private AbilitiesDisplay _abDisplay;
+        private CameraShake _cameraShake;
         
         [Header("Jump")]
         public float jumpPower;
@@ -28,6 +29,7 @@ namespace Player
 
         private void Start()
         {
+            _cameraShake = CameraShake.Instance;
             _canJump = true;
             _canDash = true;
         }
@@ -38,12 +40,14 @@ namespace Player
             {
                 rb.AddForce(new Vector2(rb.velocity.x, jumpPower));
                 StartCoroutine(ResetJump());
+                _cameraShake.ShakePlayerCamera(0.3f, 0.5f);
                 _canJump = false;
             }
             else if (Input.GetKeyDown(KeyCode.LeftShift) && _canDash)
             {
                 rb.AddForce(new Vector2(dashPower, rb.velocity.y));
                 StartCoroutine(ResetDash());
+                _cameraShake.ShakePlayerCamera(0.1f,1.5f);
                 _canDash = false;
             }
             
