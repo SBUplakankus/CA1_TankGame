@@ -796,7 +796,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Brainrot
+  m_text: Snoopy
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b45047f192070a04e8e691034a551712, type: 2}
   m_sharedMaterial: {fileID: 5550233981099752221, guid: b45047f192070a04e8e691034a551712, type: 2}
