@@ -21,11 +21,13 @@ namespace Player
 
         [Header("Scripts")] 
         public PlayerStatsDisplay statsDisplay;
+        private CameraShake _cameraShake;
 
         private void Start()
         {
             _playerHealth = maxHealth;
             statsDisplay.SetInitialStats(maxHealth, xpToLevelUp);
+            _cameraShake = CameraShake.Instance;
         }
 
         private void OnEnable()
@@ -50,6 +52,7 @@ namespace Player
                     break;
                 case Collectible.CollectibleType.Damage:
                     RemoveHealth(amount);
+                    _cameraShake.ShakePlayerCamera(0.6f,1);
                     break;
                 default:
                     Debug.LogError("Collectible Enum Error");
@@ -103,7 +106,7 @@ namespace Player
             _playerHealth -= value;
             if (_playerHealth < 0)
             {
-                Debug.Log("Game Over");
+                UIController.Instance.ShowGameOverScreen();
             }
             else
             {
